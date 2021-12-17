@@ -614,16 +614,26 @@
         init();
         Utility.setParamOnLoad();
 
+            const link  =  Utility.getParamFromUrl('test_project_id');
+          if(link){
+              $('[data-link="'+link+'"]').click();
+          }
+
+
     });
+
     $(document).on('click','.manualProjectTest',function () {
         var link = $(this).attr("data-link");
-
+        Utility.addParamToUrl('test_project_id', link);
         $.get("resource/child/"+link+"/"+link+".html", function (html_string) {
             var linkjs  ='<script src="resource/child/'+link+'/'+link+'.js" </scirpt>'
             var linkcss  ='<link  rel="stylesheet" href="resource/child/'+link+'/'+link+'.css" />';
        
             var block  = linkcss +html_string + linkjs;
             $('#mainBodyDivForAll').append(block);
+
+            loadSelectBoxesAfterGUIDesign($("#mainBodyDivForAll .redirectClass"));
+            $("#mainBodyDivForAll .redirectClass").find(".sa-onloadclick").click();
 
         })
           
