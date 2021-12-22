@@ -206,109 +206,17 @@
 
 
             <div style="display: none;" class=" bottombtn">
-                <!--                        <div class="row row-style ">
-                                            <a class="btnplus" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                <i class="fa fa-refresh" data-toggle="tooltip"
-                                                   onclick="new UserStory().refreshBacklog(this)"                  
-                                                   title="Refresh" >
-                                                </i>
-                                            </a>
-                                            <a class="" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                <span class="description-main" style="margin-top: 19px;">Sync with JIRA</span>
-                                            </a>
-                                        </div>-->
 
                 </ul>
 
 
 
                 <div style="display: none;" class=" bottombtn">
-                    <!--                        <div class="row row-style ">
-                                                <a class="btnplus" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                    <i class="fa fa-refresh" data-toggle="tooltip"
-                                                       onclick="new UserStory().refreshBacklog(this)"                  
-                                                       title="Refresh" >
-                                                    </i>
-                                                </a>
-                                                <a class="" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                    <span class="description-main" style="margin-top: 19px;">Sync with JIRA</span>
-                                                </a>
-                                            </div>-->
-
-                    <!--                        <div class="row row-style ">
-                                                <a class="btnplus" title="Payment history" data-perm4temp="admin" onclick="new UserStory().loadPaymentHistory()" data-target="#getPaymentHistory"
-                                                   data-toggle="modal">
-                                                    <i class="fa fa-money"> </i>
-                                                </a>
-                                                <a  title="Payment history" data-perm4temp="admin" onclick="new UserStory().loadPaymentHistory()" data-target="#getPaymentHistory"
-                                                    data-toggle="modal">
-                                                    <span class="description-main" style="margin-top: 19px;">Payment history</span>
-                                                </a>
-                                            </div>-->
-
-                    <!--                        <div class="row row-style ">
-                                                <a class="btnplus" title="Notification" onclick="new Notification().getNotificationList();" role="button" data-toggle="modal"
-                                                   id="dropdownMenu1" data-target="#notificationList" aria-expanded="true" >
-                                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
-                    
-                                                </a>
-                                                <a title="Notification" onclick="new Notification().getNotificationList();" role="button" data-toggle="modal"
-                                                   id="dropdownMenu1" data-target="#notificationList" aria-expanded="true" >
-                                                    <span class="description-main" style="margin-top: 19px;">Notification</span>
-                                                </a>
-                                            </div>-->
-
-
-
-
-                    <!--Bu duzelecek------------------------------------------------------>
-
-                    <!-- <a class="dropdown-toggle navbar-menu-profile btnplus" data-toggle="dropdown" href="#">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                      
-                    </a>
-                    <span class="caret" hidden id="userprofile_main_domain">
-            
-                    <ul class="dropdown-menu navbar-submenu-conf">
-                        <li style="padding:5px 0px;"><a href="#" class="navbar-submenu-line-conf" data-target="#myAccountModal"
-                                                        data-toggle="modal" onclick="new User().loadPersonalUser()"><i
-                                    class="fa fa-inbox">&nbsp;</i>My Account</a></li>
-                        <li style="padding:5px 0px;"><a href="#" class="navbar-submenu-line-conf"
-                                                        data-target="#changeMyPasswordModal" data-toggle="modal"
-                                                        onclick="new User().changeMyPasswordModal()"><i
-                                    class="fa fa-edit">&nbsp;</i>Change Password</a></li>
-                        <li style="padding:5px 0px;"><a href="#" class="navbar-submenu-line-conf" onclick="javascript:logout()"><i
-                                    class="fa fa-sign-out">&nbsp;</i>Log Out</a></li>
-                    </ul>
-                      </span> -->
-                    <!--                <img src="" class="rounded-circle" style=" margin-top:6px;" width="25px" id="userprofile_main_userimg">-->
-
-                    <!--Bu duzelecek------------------------------------------------------>
-
-
-
-
+              
 
 
                 </div>
             </div>
-            <!--      <div class="row row-style bottombtn2">
- 
-                     <span class="myaccountName" id="userprofile_main_id" style="margin-top: 5px;" data-toggle="dropdown" href="#" aria-expanded="false"></span>
-                     <div class="dropdown ">
-                        
- 
-                         <span class="caret" hidden="" id="userprofile_main_domain"></span>
-                         <ul class="dropdown-menu navbar-submenu-conf myaccount">
-                           
-                         </ul>
-                     </div>
- 
- 
-                 </div> -->
-
-
-
             </nav>
         </div>
 
@@ -661,18 +569,21 @@
                        
                     $.get("resource/child/" + link + "/" + nm, function (html_string) {
 
-                        var linkjs = '<script src="resource/child/' + link + '/' +link + '.js" </scirpt>'
+                        var linkjs = $("<scirpt>").attr('src','resource/child/' + link + '/' +link + '.js')
                         var linkcss = '<link  rel="stylesheet" href="resource/child/' +link + '/' + link + '.css" />';
 
-                        var block = linkcss + html_string + linkjs;
+                        var block =html_string;
                         if(!html_string){
                             $('#mainBodyDivForAll').html('Data Not found');
                         }else{
-                            $('#mainBodyDivForAll').html(block);
+                            $('#mainBodyDivForAll').empty();
+                            $('#mainBodyDivForAll').append(linkcss);
+                            $('#mainBodyDivForAll').append(block);
+                            $('#mainBodyDivForAll').append(linkjs);
 
                         }
-                        loadSelectBoxesAfterGUIDesign($("#mainBodyDivForAll .redirectClass"));
-                        $("#mainBodyDivForAll .redirectClass").find(".sa-onloadclick").click();
+                        loadSelectBoxesAfterGUIDesign($("#mainBodyDivForAll.redirectClass"));
+                        $("#mainBodyDivForAll.redirectClass").find(".sa-onloadclick").click();
                     })
 
                 }
