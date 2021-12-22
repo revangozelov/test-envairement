@@ -527,8 +527,6 @@
             $(html_string).find("td > a").each(function () {
                var txt = $(this).text();
                 var name =   txt.split('/');
-
-                console.log($(this).text());
                  if(name[0] !=='Parent Directory'){
                     $(".nav-menu").append(`<li>
                         <div class="project-item-zad">
@@ -543,7 +541,7 @@
             })
             const link = Utility.getParamFromUrl('test_project_id');
             if (link) {
-            $('[data-link="' + link + '"]').click();
+            $('[data-link="' +  link.replace(/%20/g,' ') + '"]').click();
             }
         })
     });
