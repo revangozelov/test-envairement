@@ -756,7 +756,7 @@
                 if (openFile($(this).attr("href"))) {
                     var nm = $(this).attr("href");
                      var nm1 = nm.split(".")
-
+                      var div = $('#mainBodyDivForAll') 
                     $.get("resource/child/" + link.replace(/%20/g, ' ') + "/" + nm, function (html_string) {
 
                         var linkjs = $("<scirpt>").attr('src', 'resource/child/' +
@@ -764,15 +764,16 @@
                         var linkcss = '<link  rel="stylesheet" href="resource/child/' +
                             link + '/' + nm1[0] + '.css" />';
                         
-                        var block = html_string;
+                        var block = $("<div>").html(html_string) ;
+                            block.find('#css-function-list-for-story-card').remove();
+                            block.find('#js-function-list-for-story-card').remove();
                         if (!html_string) {
-                            $('#mainBodyDivForAll').html('Data Not found');
+                            div.html('Data Not found');
                         } else {
-                            $('#mainBodyDivForAll').empty();
-                            $('#mainBodyDivForAll').append(linkcss);
-                            $('#mainBodyDivForAll').append(block);
-                            $('#mainBodyDivForAll').append(linkjs);
-
+                            div.empty();
+                            div.append(linkcss);
+                            div.append(block.html());
+                            div.append(linkjs);
                         }
                         loadSelectBoxesAfterGUIDesign($(
                             "#mainBodyDivForAll.redirectClass"));
