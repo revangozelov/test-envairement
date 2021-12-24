@@ -768,16 +768,18 @@
                                               .attr("href","resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".css"))
                             block.append($("<script>")
                                            .attr('src',"resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".js"))
-                    })
-                   console.log('sdfsdf');
-                    if (!html_string) {
+                                           if (!html_string) {
                             div.html('Data Not found');
                         } else {
                           
                             div.html(block);
+                           
                             loadSelectBoxesAfterGUIDesign($("#mainBodyDivForAll.redirectClass"));
                             $("#mainBodyDivForAll.redirectClass").find(".sa-onloadclick").click();
                         }
+                                           
+                    })
+                  
                        
                 }
             })
