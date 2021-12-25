@@ -660,10 +660,11 @@
         $(document).on('click', '#importexport-file-btn-envairement', function (event) {
             var blid = $("#backlog_list_for_export_envairement").val();
             var blNm = $("#backlog_list_for_export_envairement option:selected").text();
+            const cf_regex_character = blNm.replace(/[^a-z]+/i, '')
             console.log(blNm);
                    
                 var element = document.createElement('a');
-                  element.setAttribute('href',"http://test.sourcedagile.com/api/get/dwd/zip/48edh/"+blid+"/"+blNm);
+                  element.setAttribute('href',"http://test.sourcedagile.com/api/get/dwd/zip/48edh/"+blid+"/"+cf_regex_character);
                   element.setAttribute('download', blNm);
                   document.body.appendChild(element);
                   element.click();
