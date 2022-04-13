@@ -1,4 +1,4 @@
-var urlGl = "http://test.sourcedagile.com/"; 
+var urlGl = "https://test.sourcedagile.com/"; 
 function getToken() {
   return localStorage.getItem('tk');
 }
