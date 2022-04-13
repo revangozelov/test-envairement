@@ -721,6 +721,7 @@
                             block.find('#css-function-list-for-story-card').remove();
                             block.find('#js-function-list-for-story-card').remove();
                             block.prepend($("<link>")
+                                               .attr('rel',"stylesheet")
                                               .attr("href","resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".css"))
                             block.append($("<script>")
                                            .attr('src',"resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".js"))
