@@ -669,16 +669,18 @@
         Utility.setParamOnLoad();
         global_var.current_domain  = '48edh';
         $(".nav-menu").empty();
+    
         $.get("resource/child/", function (html_string) {
             var select = $('#folder_list_for_import_envairement');
             select.html('')
             $(html_string).find("td > a").each(function () {
                 var txt = $(this).text();
                 var name = txt.split('/');
+                var name1 = $(this).attr('href').split('/');
                 if (name[0] !== 'Parent Directory') {
                     $(".nav-menu").append(`<li>
                         <div class="project-item-zad">
-                            <a class="manualProjectTest   openNavhide  left-menu-load " data-link="${name[0]}">
+                            <a class="manualProjectTest   openNavhide  left-menu-load " data-link="${name1[0]}">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
                                 <span class="description-main" style="margin-top: 19px;">${name[0]}</span></a>
 
@@ -696,7 +698,7 @@
             })
             const link = Utility.getParamFromUrl('test_project_id');
             if (link) {
-                $('[data-link="' + link.replace(/%20/g, ' ') + '"]').click();
+                $('[data-link="' + link + '"]').trigger('click');
             }
         })
     });
@@ -724,17 +726,17 @@
                       var div = $('#mainBodyDivForAll') ;
                       div.empty();
                       let  block =$("<div>")
-                    $.get("resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".html", function (html_string) {
+                          console.log("resource/child/" + link + "/" + nm1[0]+".html");
+                    $.get("resource/child/" + link + "/" + nm1[0]+".html", function (html_string) {
                             block.append(html_string) ;
                             block.find('#css-function-list-for-story-card').remove();
                             block.find('#js-function-list-for-story-card').remove();
                             block.prepend($("<link>")
                                                .attr('rel',"stylesheet")
-                                              .attr("href","resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".css"))
+                                              .attr("href","resource/child/" + link + "/" + nm1[0]+".css"))
                             block.append($("<script>")
-                                           .attr('src',"resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".js"))
+                                           .attr('src',"resource/child/" + link + "/" + nm1[0]+".js"))
                     })
-                   console.log('sdfsdf');
                     if (!html_string) {
                             div.html('Data Not found');
                         } else {
