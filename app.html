@@ -677,12 +677,13 @@
                 var txt = $(this).text();
                 var name = txt.split('/');
                 var name1 = $(this).attr('href').split('/');
+                console.log(decodeURI(name[0]));
                 if (name[0] !== 'Parent Directory') {
                     $(".nav-menu").append(`<li>
                         <div class="project-item-zad">
                             <a class="manualProjectTest   openNavhide  left-menu-load " data-link="${name1[0]}">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                <span class="description-main" style="margin-top: 19px;">${name[0]}</span></a>
+                                <span class="description-main" style="margin-top: 19px;">${decodeURIComponent(name1[0])}</span></a>
 
                         </div>
                     </li>`)
